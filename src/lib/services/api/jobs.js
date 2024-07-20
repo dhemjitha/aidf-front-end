@@ -68,10 +68,14 @@ export const createJob = async ({
 };
 
 export const deleteJobById = async (id) => {
+  if (!window.Clerk || !window.Clerk.session) {
+    throw new Error("Clerk is not initialized properly.");
+  }
+
   const token = await window.Clerk.session.getToken();
 
   const res = await fetch(
-    `https://aidf-back-end-production-a419.up.railway.app/${id}`,
+    `https://aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
     {
       method: "DELETE",
       headers: {
@@ -81,8 +85,10 @@ export const deleteJobById = async (id) => {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to delete job");
+    const errorMessage = await res.text(); // Optionally get more details about the error
+    throw new Error(`Failed to delete job. Server responded with status ${res.status}. ${errorMessage}`);
   }
 
   return { success: true };
 };
+
