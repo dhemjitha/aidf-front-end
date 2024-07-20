@@ -22,27 +22,47 @@ function AdminJobPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
+
     const fetchJobData = async () => {
       try {
         if (!session) {
           throw new Error("Clerk session is not available.");
         }
-  
+
         const jobData = await getJobById(id);
         setJob(jobData);
         setIsJobLoading(false);
       } catch (error) {
         console.error("Error fetching job:", error);
         setIsJobLoading(false);
+        toast.error("Failed to fetch job details. Please try again.");
       }
     };
-  
-    // Call fetchJobData when session and id are available
-    if (session && id) {
+
+    const fetchJobApplicationsData = async () => {
+      try {
+        if (!session) {
+          throw new Error("Clerk session is not available.");
+        }
+
+        const applicationsData = await getJobApllicationsForJob(id);
+        setJobApplications(applicationsData);
+        setIsJobApplicationsLoading(false);
+      } catch (error) {
+        console.error("Error fetching job applications:", error);
+        setIsJobApplicationsLoading(false);
+        toast.error("Failed to fetch job applications. Please try again.");
+      }
+    };
+
+    if (session) {
       fetchJobData();
+      fetchJobApplicationsData();
     }
   }, [id, session]);
-  
 
   const handleDeleteJob = async () => {
     toast(
