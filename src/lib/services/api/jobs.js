@@ -16,8 +16,8 @@ export const getJobById = async (id) => {
 
   const token = await window.Clerk.session.getToken();
 
-  console.log("Fetching job with ID:", id);
-  console.log("Using token:", token);
+  // console.log("Fetching job with ID:", id);
+  // console.log("Using token:", token);
 
   const res = await fetch(
     `https://aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
