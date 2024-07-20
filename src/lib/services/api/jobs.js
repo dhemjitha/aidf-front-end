@@ -1,6 +1,6 @@
 export const getJobs = async () => {
   const res = await fetch(
-    "http://localhost:8000/jobs",
+    "https://aidf-back-end-production-a419.up.railway.app/jobs",
     {
       method: "GET",
     }

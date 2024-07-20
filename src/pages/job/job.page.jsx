@@ -10,14 +10,16 @@ import { Navigate, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const getJob = async (id, token) => {
-  const res = await fetch(`http://localhost:8000/jobs/${id}`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    `aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch job details");
@@ -29,14 +31,17 @@ const getJob = async (id, token) => {
 
 const createJob = async (jobApplication, token) => {
   try {
-    const response = await fetch(`http://localhost:8000/jobApplications`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(jobApplication),
-    });
+    const response = await fetch(
+      `aidf-back-end-production-a419.up.railway.app/jobApplications`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(jobApplication),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to create job application");
@@ -51,7 +56,6 @@ const createJob = async (jobApplication, token) => {
       draggable: true,
       progress: undefined,
     });
-    
   } catch (error) {
     toast.error("Error submitting job application. Please try again.", {
       position: "top-right",
@@ -238,11 +242,4 @@ function JobPage() {
   );
 }
 
-
-
 export default JobPage;
-
-
-
-
-
