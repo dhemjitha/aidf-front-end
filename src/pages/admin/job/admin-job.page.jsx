@@ -38,7 +38,6 @@ function AdminJobPage() {
       } catch (error) {
         console.error("Error fetching job:", error);
         setIsJobLoading(false);
-        toast.error("Failed to fetch job details. Please try again.");
       }
     };
 
@@ -54,8 +53,6 @@ function AdminJobPage() {
       } catch (error) {
         console.error("Error fetching job applications:", error);
         setIsJobApplicationsLoading(false);
-        toast.error("Failed to fetch job applications. Retrying...");
-        setTimeout(fetchJobApplicationsData, 3000); // Retry after 3 seconds
       }
     };
 

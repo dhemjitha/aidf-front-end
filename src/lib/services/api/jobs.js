@@ -16,8 +16,11 @@ export const getJobById = async (id) => {
 
   const token = await window.Clerk.session.getToken();
 
+  console.log("Fetching job with ID:", id);
+  console.log("Using token:", token);
+
   const res = await fetch(
-    `https://aidf-back-end-production-a419.up.railway.app/${id}`,
+    `https://aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
     {
       method: "GET",
       headers: {
@@ -28,6 +31,7 @@ export const getJobById = async (id) => {
 
   if (!res.ok) {
     const errorMessage = await res.text(); // Get the error message from the server
+    console.error("Server responded with status:", res.status, errorMessage);
     throw new Error(
       `Failed to fetch job details. Server responded with status ${res.status}. ${errorMessage}`
     );
@@ -36,6 +40,7 @@ export const getJobById = async (id) => {
   const data = await res.json();
   return data;
 };
+
 
 export const createJob = async ({
   title,
