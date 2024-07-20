@@ -46,7 +46,7 @@ export const createJob = async ({
 }) => {
   const token = await window.Clerk.session.getToken();
 
-  await fetch("https://aidf-back-end-production-a419.up.railway.app", {
+  await fetch("https://aidf-back-end-production-a419.up.railway.app/jobs", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
