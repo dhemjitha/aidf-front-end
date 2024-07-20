@@ -11,7 +11,7 @@ function Footer() {
       <Separator />
       <br />
       <Avatar>
-        <AvatarImage src="public/assets/home/dulran.jpg" />
+        <AvatarImage src="https://avatars.githubusercontent.com/u/154544492?v=4" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       <div className="py-3 justify-between flex">
