@@ -54,10 +54,8 @@ function AdminJobPage() {
       } catch (error) {
         console.error("Error fetching job applications:", error);
         setIsJobApplicationsLoading(false);
-        toast.error("Failed to fetch job applications. Please try again.");
-
-        // Retry fetching after a delay (e.g., 3 seconds)
-        setTimeout(fetchJobApplicationsData, 3000);
+        toast.error("Failed to fetch job applications. Retrying...");
+        setTimeout(fetchJobApplicationsData, 3000); // Retry after 3 seconds
       }
     };
 
