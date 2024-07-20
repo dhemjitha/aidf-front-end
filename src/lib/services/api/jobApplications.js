@@ -6,7 +6,7 @@ export const getJobApllicationsForJob = async (id) => {
 
   const token = await window.Clerk.session.getToken();
 
-  const res = await fetch(`http://localhost:8000/jobApplications?jobid=${id}`, {
+  const res = await fetch(`https://aidf-back-end-production-a419.up.railway.app/jobApplications?jobid=${id}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -25,7 +25,7 @@ export const getJobApplicationById = async (id) => {
 
   const token = await window.Clerk.session.getToken();
 
-  const res = await fetch(`http://localhost:8000/jobApplications/${id}`, {
+  const res = await fetch(`https://aidf-back-end-production-a419.up.railway.app/jobApplications/${id}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -43,7 +43,7 @@ export const createJobApplication = async ({
 }) => {
   const token = await window.Clerk.session.getToken();
 
-  await fetch("http://localhost:8000/jobApplications", {
+  await fetch("https://aidf-back-end-production-a419.up.railway.app/jobApplications", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export const createJobApplication = async ({
 export const deleteJobApplication = async (id) => {
   const token = await window.Clerk.session.getToken();
 
-  const res = await fetch(`http://localhost:8000/jobApplications/${id}`, {
+  const res = await fetch(`https://aidf-back-end-production-a419.up.railway.app/jobApplications/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
