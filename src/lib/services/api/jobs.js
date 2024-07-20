@@ -24,12 +24,14 @@ export const getJobById = async (id) => {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch job details");
+    const errorMessage = await res.text(); // Get the error message from the server
+    throw new Error(`Failed to fetch job details. Server responded with status ${res.status}. ${errorMessage}`);
   }
 
   const data = await res.json();
   return data;
 };
+
 
 
 export const createJob = async ({
