@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const getJob = async (id, token) => {
   const res = await fetch(
-    `aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
+    `https://aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
     {
       method: "GET",
       headers: {
@@ -32,7 +32,7 @@ const getJob = async (id, token) => {
 const createJob = async (jobApplication, token) => {
   try {
     const response = await fetch(
-      `aidf-back-end-production-a419.up.railway.app/jobApplications`,
+      `https://aidf-back-end-production-a419.up.railway.app/jobApplications`,
       {
         method: "POST",
         headers: {

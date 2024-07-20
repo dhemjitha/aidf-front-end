@@ -16,23 +16,26 @@ export const getJobById = async (id) => {
 
   const token = await window.Clerk.session.getToken();
 
-  const res = await fetch(`https://aidf-back-end-production-a419.up.railway.app/${id}`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    `https://aidf-back-end-production-a419.up.railway.app/${id}`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   if (!res.ok) {
     const errorMessage = await res.text(); // Get the error message from the server
-    throw new Error(`Failed to fetch job details. Server responded with status ${res.status}. ${errorMessage}`);
+    throw new Error(
+      `Failed to fetch job details. Server responded with status ${res.status}. ${errorMessage}`
+    );
   }
 
   const data = await res.json();
   return data;
 };
-
-
 
 export const createJob = async ({
   title,
@@ -62,19 +65,19 @@ export const createJob = async ({
 export const deleteJobById = async (id) => {
   const token = await window.Clerk.session.getToken();
 
-  const res = await fetch(`https://aidf-back-end-production-a419.up.railway.app/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  const res = await fetch(
+    `https://aidf-back-end-production-a419.up.railway.app/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 
   if (!res.ok) {
-    throw new Error('Failed to delete job');
+    throw new Error("Failed to delete job");
   }
 
   return { success: true };
 };
-
-
-
