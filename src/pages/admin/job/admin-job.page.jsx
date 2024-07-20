@@ -22,16 +22,12 @@ function AdminJobPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!id) {
-      return;
-    }
-
     const fetchJobData = async () => {
       try {
         if (!session) {
           throw new Error("Clerk session is not available.");
         }
-
+  
         const jobData = await getJobById(id);
         setJob(jobData);
         setIsJobLoading(false);
@@ -40,27 +36,13 @@ function AdminJobPage() {
         setIsJobLoading(false);
       }
     };
-
-    const fetchJobApplicationsData = async () => {
-      try {
-        if (!session) {
-          throw new Error("Clerk session is not available.");
-        }
-
-        const applicationsData = await getJobApllicationsForJob(id);
-        setJobApplications(applicationsData);
-        setIsJobApplicationsLoading(false);
-      } catch (error) {
-        console.error("Error fetching job applications:", error);
-        setIsJobApplicationsLoading(false);
-      }
-    };
-
-    if (session) {
+  
+    // Call fetchJobData when session and id are available
+    if (session && id) {
       fetchJobData();
-      fetchJobApplicationsData();
     }
   }, [id, session]);
+  
 
   const handleDeleteJob = async () => {
     toast(
