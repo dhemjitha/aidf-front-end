@@ -12,7 +12,7 @@ function Footer() {
       <br />
       <Avatar>
         <AvatarImage src="https://avatars.githubusercontent.com/u/154544492?v=4" />
-        <AvatarFallback>CN</AvatarFallback>
+        
       </Avatar>
       <div className="py-3 justify-between flex">
         <h4 className="font-extrabold">Dulran Hemjitha</h4>
