@@ -26,7 +26,7 @@ function AdminMainLayout() {
       <div className="relative border-b-transparent">
         <nav className="flex py-12 justify-between items-center">
         <div>
-            <Link to={"/admin"} className="text-4xl font-medium text-underlay-1">
+            <Link to={"/"} className="text-4xl font-medium text-underlay-1">
                 HirelyAI
             </Link>
         </div>
