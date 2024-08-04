@@ -9,8 +9,7 @@ import { deleteJobApplication } from "@/lib/services/api/jobApplications";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ConfirmDeletionToast from "@/pages/home/components/ConfirmDeletionToast";
-import { useSession } from '@clerk/clerk-react';
-
+import { useSession } from "@clerk/clerk-react";
 
 function AdminJobApplicationPage() {
   const [jobApplication, setJobApplication] = useState(null);
@@ -21,7 +20,7 @@ function AdminJobApplicationPage() {
 
   useEffect(() => {
     if (!applicationId || !session) return;
-  
+
     const fetchJobApplicationData = async () => {
       try {
         const data = await getJobApplicationById(applicationId, session);
@@ -32,15 +31,12 @@ function AdminJobApplicationPage() {
         setIsLoading(false);
       }
     };
-  
+
     fetchJobApplicationData();
   }, [applicationId, session]);
-  
 
   if (isLoading) {
-    return (
-      <div className="mt-3 animate-pulse">Loading...</div>
-    );
+    return <div className="mt-3 animate-pulse">Loading...</div>;
   }
 
   const handleDelete = async (applicationId) => {
@@ -97,9 +93,12 @@ function AdminJobApplicationPage() {
           <CardTitle>{jobApplication?.fullName}</CardTitle>
           <Badge
             className={cn({
-              "bg-red-500": jobApplication?.rating?.toLocaleLowerCase() === "bad",
-              "bg-orange-400": jobApplication?.rating?.toLocaleLowerCase() === "moderate",
-              "bg-teal-500": jobApplication?.rating?.toLocaleLowerCase() === "good",
+              "bg-red-500":
+                jobApplication?.rating?.toLocaleLowerCase() === "bad",
+              "bg-orange-400":
+                jobApplication?.rating?.toLocaleLowerCase() === "moderate",
+              "bg-teal-500":
+                jobApplication?.rating?.toLocaleLowerCase() === "good",
             })}
           >
             {jobApplication?.rating}
@@ -107,16 +106,29 @@ function AdminJobApplicationPage() {
         </CardHeader>
       </Card>
 
-      <Card className="p-4">
-        {/* {jobApplication.answers.map((answer, i) => {
-          return <p key={i}>{answer}</p>;
-        })} */}
+      <Card className="p-8 bg-gradient-to-r from-white to-gray-50 shadow-xl rounded-2xl border border-gray-300">
+        <h2 className="text-2xl font-bold mb-6 text-center text-indigo-600">
+          Job Application Answers
+        </h2>
+        {jobApplication.answers.map((answer, i) => (
+          <p
+            key={i}
+            className="text-gray-900 text-lg mb-4 p-4 bg-gray-100 rounded-lg shadow-sm"
+          >
+            {answer}
+          </p>
+        ))}
       </Card>
+
       <div>
         <Button variant="link" asChild>
           <Link to={"/admin/jobs"}>Back</Link>
         </Button>
-        <Button onClick={() => handleDelete(applicationId)} type="submit" variant="destructive">
+        <Button
+          onClick={() => handleDelete(applicationId)}
+          type="submit"
+          variant="destructive"
+        >
           Reject
         </Button>
       </div>
