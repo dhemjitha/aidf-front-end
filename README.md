@@ -27,7 +27,16 @@ HirelyAI introduces an AI-powered assessment system that evaluates candidates ba
 - **Deployment:** Railway (Backend), Netlify (Frontend)
 
 ## 📸 Screenshots
-Coming soon...
+
+### Home Page
+![Home Page](public/assets/home/Home-Page.png)
+
+### Create A Job
+![Create A Page](public/assets/home/Create-Job.png)
+
+### AI Evaluation Result
+![AI Evaluation](public/assets/home/AI-Part.png)
+
 
 ## 🔗 Live Demo
 Check out the live version here: [HirelyAI Live](https://aidf-front-end-dulran.netlify.app/)
