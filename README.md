@@ -26,6 +26,20 @@ HirelyAI introduces an AI-powered assessment system that evaluates candidates ba
 - **Authentication:** Clerk
 - **Deployment:** Railway (Backend), Netlify (Frontend)
 
+## 🏗️ Architecture Diagrams
+
+### Client Server Architecture
+![Client Server Architecture](public/assets/architecture/CS-Architecture.png)
+
+### Back-end Routing Flow
+![Back-end Routing Flow](public/assets/architecture/Routings.png)
+
+### Middleware Flow
+![Middleware Flow](public/assets/architecture/Middleware.png)
+
+### Authentication Flow
+![Authentication Flow](public/assets/architecture/Authentication.png)
+
 ## 📸 Screenshots
 
 ### Home Page
