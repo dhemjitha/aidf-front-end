@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import { Briefcase, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -29,7 +29,7 @@ const getJob = async (id, token) => {
   return job;
 };
 
-const createJob = async (jobApplication, token) => {
+const createJob = async (jobApplication, token, navigate) => {
   try {
     const response = await fetch(
       `https://aidf-back-end-production-a419.up.railway.app/jobApplications`,
@@ -55,7 +55,11 @@ const createJob = async (jobApplication, token) => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
+      onClose: () => {
+        navigate(-1); // Navigate back to the previous page
+      }
     });
+    
   } catch (error) {
     toast.error("Error submitting job application. Please try again.", {
       position: "top-right",
@@ -74,6 +78,7 @@ function JobPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
+  const navigate = useNavigate(); // Add useNavigate hook
 
   const { isLoaded, isSignedIn, user } = useUser();
   const { getToken } = useAuth();
@@ -117,7 +122,8 @@ function JobPage() {
           job: params.id,
           userId: user.id,
         },
-        token
+        token,
+        navigate // Pass navigate function to createJob
       );
     } catch (err) {
       console.error(err);
