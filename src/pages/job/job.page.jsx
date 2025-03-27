@@ -56,7 +56,7 @@ const createJob = async (jobApplication, token, navigate) => {
       draggable: true,
       progress: undefined,
       onClose: () => {
-        navigate(-1); // Navigate back to the previous page
+        navigate(-1);
       }
     });
     
@@ -78,7 +78,7 @@ function JobPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const params = useParams();
-  const navigate = useNavigate(); // Add useNavigate hook
+  const navigate = useNavigate();
 
   const { isLoaded, isSignedIn, user } = useUser();
   const { getToken } = useAuth();
@@ -123,7 +123,7 @@ function JobPage() {
           userId: user.id,
         },
         token,
-        navigate // Pass navigate function to createJob
+        navigate
       );
     } catch (err) {
       console.error(err);
