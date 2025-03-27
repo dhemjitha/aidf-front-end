@@ -61,12 +61,12 @@ function Navigation() {
             <SignedIn>
               <UserButton className="w-full text-center" />
               {user?.publicMetadata?.role == "admin" && (
-              <Link to="/admin" onClick={toggleMenu}>
-                <Button className="w-full py-4">
-                  Admin Dashboard
+                <Button className="w-full">
+                  <Link to="/admin" onClick={toggleMenu}>
+                    Admin Dashboard
+                  </Link>
                 </Button>
-              </Link>
-            )}
+              )}
             </SignedIn>
             <SignedOut>
               <Link to="/sign-in" className="w-full text-center">
