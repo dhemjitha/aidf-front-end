@@ -1,6 +1,6 @@
 export const getJobs = async () => {
   const res = await fetch(
-    "https://aidf-back-end-production-a419.up.railway.app/jobs",
+    "https://aidf-back-end.vercel.app/jobs",
     {
       method: "GET",
     }
@@ -20,7 +20,7 @@ export const getJobById = async (id) => {
   // console.log("Using token:", token);
 
   const res = await fetch(
-    `https://aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
+    `https://aidf-back-end.vercel.app/jobs/${id}`,
     {
       method: "GET",
       headers: {
@@ -51,7 +51,7 @@ export const createJob = async ({
 }) => {
   const token = await window.Clerk.session.getToken();
 
-  await fetch("https://aidf-back-end-production-a419.up.railway.app/jobs", {
+  await fetch("https://aidf-back-end.vercel.app/jobs", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -75,7 +75,7 @@ export const deleteJobById = async (id) => {
   const token = await window.Clerk.session.getToken();
 
   const res = await fetch(
-    `https://aidf-back-end-production-a419.up.railway.app/jobs/${id}`,
+    `https://aidf-back-end.vercel.app/jobs/${id}`,
     {
       method: "DELETE",
       headers: {
